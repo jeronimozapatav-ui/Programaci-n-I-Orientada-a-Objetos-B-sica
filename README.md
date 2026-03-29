@@ -41,6 +41,7 @@ _🚀 Actualmente aprendiendo Java y desarrollo de software_
 
 ## 📁 Estructura del proyecto
 
+_codigo de la actividad 2 
 
 
 ##  VIDEOS ## 
