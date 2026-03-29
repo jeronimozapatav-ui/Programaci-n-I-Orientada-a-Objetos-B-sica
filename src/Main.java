@@ -150,7 +150,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Biblioteca biblioteca = new Biblioteca();
+        Biblioteca Biblioteca = new Biblioteca();
 
         int opcion;
 
@@ -181,7 +181,8 @@ public class Main {
                     System.out.print("ISBN: ");
                     String isbn = sc.nextLine();
 
-                    biblioteca.agregarLibro(new Libro(titulo, autor, isbn));
+                  
+                    Biblioteca.agregarLibro(new Libro(titulo, autor, isbn));
                     break;
 
                 case 2:
@@ -192,15 +193,15 @@ public class Main {
                     System.out.print("ID usuario: ");
                     String id = sc.nextLine();
 
-                    biblioteca.registrarUsuario(new Usuario(nombre, id));
+                    Biblioteca.registrarUsuario(new Usuario(nombre, id));
                     break;
 
                 case 3:
-                    biblioteca.mostrarLibros();
+                    Biblioteca.mostrarLibros();
                     break;
 
                 case 4:
-                    biblioteca.mostrarUsuarios();
+                    Biblioteca.mostrarUsuarios();
                     break;
 
                 case 5:
@@ -211,7 +212,7 @@ public class Main {
                     System.out.print("ID del usuario: ");
                     String idPrestamo = sc.nextLine();
 
-                    biblioteca.prestarLibro(isbnPrestamo, idPrestamo);
+                    Biblioteca.prestarLibro(isbnPrestamo, idPrestamo);
                     break;
 
                 case 6:
@@ -222,7 +223,7 @@ public class Main {
                     System.out.print("ID del usuario: ");
                     String idDev = sc.nextLine();
 
-                    biblioteca.devolverLibro(isbnDev, idDev);
+                    Biblioteca.devolverLibro(isbnDev, idDev);
                     break;
 
                 case 7:
