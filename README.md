@@ -3,7 +3,9 @@
 _Hola, soy Jerónimo_
 
 _🎓 Estudiante de Tecnología en Desarrollo de Software_ 
+
 _💻 Apasionado por la programación y la POO_  
+
 _🚀 Actualmente aprendiendo Java y desarrollo de software_  
 
 ## 📫 Contacto
@@ -38,3 +40,7 @@ _🚀 Actualmente aprendiendo Java y desarrollo de software_
 ---
 
 ## 📁 Estructura del proyecto
+
+
+$ videos 
+
