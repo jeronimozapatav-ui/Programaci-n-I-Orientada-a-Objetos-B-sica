@@ -42,7 +42,9 @@ _🚀 Actualmente aprendiendo Java y desarrollo de software_
 ## 📁 Estructura del proyecto
 
 _codigo de la actividad 2_
+https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java
 
+_codigo de la actividad 3_
 
 ##  VIDEOS ## 
 
