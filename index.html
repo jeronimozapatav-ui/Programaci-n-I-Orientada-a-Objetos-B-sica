@@ -17,10 +17,9 @@
 
 body{
 margin:0;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-family:Segoe UI, Tahoma, sans-serif;
 background:var(--bg);
 color:var(--text);
-line-height: 1.6;
 }
 
 #particles-js{
@@ -32,91 +31,66 @@ z-index:-1;
 
 section{
 padding:80px 20px;
-max-width:1100px;
+max-width:1000px;
 margin:auto;
 }
 
-h1, h2, h3{
+h1,h2,h3{
 text-align:center;
-color: var(--primary);
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px, 1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top: 30px;
 }
 
 .card{
 background:var(--card);
-padding:25px;
-border-radius:12px;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-border: 1px solid rgba(56, 189, 248, 0.1);
-}
-
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+padding:20px;
+border-radius:10px;
+text-align:left; /* Alineación para mejor lectura de listas */
 }
 
 .card h3 {
+color: var(--primary);
 margin-top: 0;
-font-size: 1.2em;
-text-align: left;
-}
-
-.card p, .card li {
-font-size: 0.95em;
-color: #cbd5e1;
-}
-
-.intro-text {
-text-align:center;
-max-width: 800px;
-margin: 0 auto 40px;
-font-size: 1.1em;
-}
-
-.gallery {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 15px;
-}
-
-.gallery img {
-width: 100%;
-height: 150px;
-object-fit: cover;
-border-radius: 8px;
-cursor: pointer;
-transition: 0.3s;
-border: 1px solid #334155;
-}
-
-.gallery img:hover {
-transform: scale(1.05);
-border-color: var(--primary);
+text-align: center;
 }
 
 a{
 color:var(--primary);
 text-decoration:none;
-font-weight: bold;
 }
 
-a:hover {
+a:hover{
 text-decoration: underline;
 }
 
-.tech-tag {
-background: #334155;
-padding: 5px 12px;
-border-radius: 20px;
-font-size: 0.85em;
-margin-right: 5px;
-display: inline-block;
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+img{
+width:100%;
+border-radius:10px;
+border: 1px solid #334155;
+transition: 0.3s;
+}
+
+img:hover{
+transform: scale(1.03);
+}
+
+ul {
+padding-left: 20px;
+}
+
+li {
+margin-bottom: 8px;
+font-size: 0.95em;
 }
 </style>
 
@@ -128,39 +102,36 @@ display: inline-block;
 
 <section>
 <h1>👋 Hola, soy Jerónimo</h1>
-<div class="intro-text">
-    <p>
-        🎓 Estudiante de Tecnología en Desarrollo de Software<br>
-        💻 Apasionado por la programación y la POO<br>
-        🚀 Actualmente aprendiendo <strong>Java y desarrollo de software</strong><br>
-        📫 Contacto: <a href="mailto:jeronimo.zapatav@est.iudigital.edu.co">jeronimo.zapatav@est.iudigital.edu.co</a>
-    </p>
-</div>
+<p style="text-align:center;">
+🎓 Estudiante de Tecnología en Desarrollo de Software<br>
+💻 Apasionado por la programación y la POO<br>
+🚀 Actualmente aprendiendo Java y desarrollo de software<br>
+📫 Email: <a href="mailto:jeronimo.zapatav@est.iudigital.edu.co">jeronimo.zapatav@est.iudigital.edu.co</a>
+</p>
 </section>
 
 <section>
 <h2>🧠 ¿Qué aprendí en clase?</h2>
-<p class="intro-text">Basado en el contenido de las unidades de aprendizaje de Programación I.</p>
 <div class="cards">
     <div class="card">
         <h3>Clases y Objetos</h3>
-        <p>Modelado de entidades del mundo real mediante tipos abstractos de datos y diagramas UML.</p>
+        <p>Modelado de entidades mediante tipos abstractos de datos y diagramas visuales UML.</p>
     </div>
     <div class="card">
         <h3>Encapsulamiento</h3>
-        <p>Control de acceso a datos mediante modificadores (public, private, protected) para proteger la integridad del código.</p>
+        <p>Protección de datos mediante modificadores de acceso y control de ámbitos de variables.</p>
     </div>
     <div class="card">
         <h3>Herencia y Polimorfismo</h3>
-        <p>Creación de jerarquías de clases y métodos que se adaptan dinámicamente según el objeto que los invoca.</p>
+        <p>Reutilización de código mediante jerarquías y adaptación dinámica de objetos según su contexto.</p>
     </div>
 </div>
 </section>
 
-<section style="background: rgba(30, 41, 59, 0.5); border-radius: 20px; padding: 40px;">
+<section>
 <h2>📚 Proyecto: Sistema de Biblioteca</h2>
-<p class="intro-text">
-    Este proyecto implementa un sistema robusto de gestión utilizando <strong>Java</strong> y los principios fundamentales de la POO, permitiendo una administración eficiente de recursos y usuarios.
+<p style="text-align:center; margin-bottom: 30px;">
+Este proyecto implementa un sistema de gestión utilizando Java y principios de POO.
 </p>
 
 <div class="cards">
@@ -168,70 +139,58 @@ display: inline-block;
         <h3>⚙️ Funcionalidades</h3>
         <ul>
             <li>Registro de libros y usuarios</li>
-            <li>Préstamo y devolución de libros</li>
+            <li>Préstamo y devolución</li>
             <li>Búsqueda por título o autor</li>
             <li>Visualización de disponibilidad</li>
             <li>Control de máximo 3 préstamos</li>
-            <li>Validación de stock en tiempo real</li>
+            <li>Validación de stock</li>
         </ul>
     </div>
 
     <div class="card">
-        <h3>🧠 Conceptos Aplicados</h3>
+        <h3>🧠 Conceptos aplicados</h3>
         <ul>
-            <li><strong>Encapsulamiento:</strong> Atributos privados.</li>
-            <li><strong>Herencia:</strong> Relación Persona → Usuario.</li>
-            <li><strong>Polimorfismo:</strong> Sobrescritura y sobrecarga de métodos.</li>
-            <li><strong>Abstracción:</strong> Modelado de entidades.</li>
+            <li>Encapsulamiento</li>
+            <li>Herencia (Persona → Usuario)</li>
+            <li>Polimorfismo (Sobrescritura)</li>
+            <li>Clases y Objetos</li>
         </ul>
     </div>
 
     <div class="card">
         <h3>🛠️ Tecnologías y Código</h3>
-        <p>
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">POO</span>
-            <span class="tech-tag">UML</span>
+        <p style="text-align: center;"><strong>Java - POO</strong></p>
+        <p style="text-align: center;">
+            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">Código Actividad 2</a><br><br>
+            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">Código Actividad 3</a>
         </p>
-        <hr style="border: 0.5px solid #334155; margin: 15px 0;">
-        <p><strong>Repositorios:</strong></p>
-        <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">🔗 Código Actividad 2</a><br>
-        <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">🔗 Código Actividad 3</a>
     </div>
 </div>
 </section>
 
 <section>
-<h2>🖼️ Evidencias del Proyecto</h2>
-<p class="intro-text">Capturas de pantalla del funcionamiento y estructura del código.</p>
+<h2>🖼️ Evidencias</h2>
 <div class="gallery">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png" alt="Evidencia 1">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png" alt="Evidencia 2">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png" alt="Evidencia 3">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png" alt="Evidencia 4">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/5.png" alt="Evidencia 5">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/6.png" alt="Evidencia 6">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/7.png" alt="Evidencia 7">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/8.png" alt="Evidencia 8">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/9.png" alt="Evidencia 9">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/10.png" alt="Evidencia 10">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/11.png" alt="Evidencia 11">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/12.png" alt="Evidencia 12">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/13.png" alt="Evidencia 13">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/14.png" alt="Evidencia 14">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/5.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/6.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/7.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/8.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/9.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/10.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/11.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/12.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/13.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/14.png">
 </div>
 </section>
 
 <script>
 particlesJS("particles-js",{
-    particles:{
-        number:{value:60},
-        color:{value:"#38bdf8"},
-        shape:{type:"circle"},
-        opacity:{value:0.5},
-        size:{value:3},
-        move:{speed:1.5}
-    }
+particles:{number:{value:80},move:{speed:2}}
 });
 </script>
 
