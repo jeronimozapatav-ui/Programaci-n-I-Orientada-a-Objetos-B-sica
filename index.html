@@ -3,120 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POO Dashboard PRO - Jerónimo</title>
+<title>POO App Nivel Dios - Jerónimo</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 :root{--bg:#000;--text:#e2e8f0;--primary:#38bdf8;--card:#0f172a}
-body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text)}
-section{padding:50px 20px;max-width:1200px;margin:auto}
-h1,h2{color:var(--primary)}
-.card{background:var(--card);padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 0 20px rgba(56,189,248,0.2)}
-input,button{padding:10px;margin:5px;border:none;border-radius:5px}
-button{background:var(--primary);cursor:pointer}
-.hidden{display:none}
-.item{padding:10px;border-bottom:1px solid #333}
+.light{--bg:#f8fafc;--text:#000;--card:#fff}
+body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text);display:flex;transition:.3s}
+
+.sidebar{width:220px;background:#020617;height:100vh;padding:20px;position:fixed}
+.sidebar a{display:block;color:white;margin:10px 0;text-decoration:none}
+
+.main{margin-left:240px;padding:20px;width:100%}
+.card{background:var(--card);padding:20px;border-radius:12px;margin:15px 0}
+button{background:var(--primary);padding:10px;border:none;border-radius:5px;cursor:pointer}
+input{padding:10px;margin:5px;border:none;border-radius:5px}
+
+@media(max-width:768px){
+ .sidebar{position:relative;width:100%;height:auto}
+ .main{margin-left:0}
+}
 </style>
 </head>
 
 <body>
 
-<section id="loginSection">
-<h1>🔐 Login Sistema Biblioteca</h1>
-<div class="card">
-<input id="loginUser" placeholder="Usuario">
-<button onclick="login()">Ingresar</button>
-</div>
-</section>
-
-<section id="dashboard" class="hidden">
-<h1>📊 Dashboard Biblioteca</h1>
-
-<div class="card">
-<h2>🧠 Nota Programación I</h2>
-<p>Clases, Objetos, Encapsulamiento, Herencia, Polimorfismo, Abstracción, ArrayList.</p>
+<div class="sidebar">
+<h2>📊 Panel</h2>
+<a href="#">Inicio</a>
+<button onclick="toggleMode()">Modo</button>
 </div>
 
+<div class="main">
+
 <div class="card">
-<h2>👤 Usuarios</h2>
-<input id="userName" placeholder="Nombre usuario">
-<button onclick="addUser()">Agregar</button>
-<div id="users"></div>
+<h2>👤 Login</h2>
+<input id="user" placeholder="Usuario">
+<select id="role">
+<option value="admin">Admin</option>
+<option value="user">Usuario</option>
+</select>
+<button onclick="login()">Entrar</button>
 </div>
+
+<div id="app" style="display:none">
 
 <div class="card">
 <h2>📚 Libros</h2>
-<input id="bookName" placeholder="Nombre libro">
+<input id="book" placeholder="Libro">
 <button onclick="addBook()">Agregar</button>
-<input id="search" placeholder="Buscar libro" oninput="render()">
 <div id="books"></div>
 </div>
 
 <div class="card">
-<h2>🌐 Deploy</h2>
-<p>Sube este archivo como index.html a GitHub y activa Pages.</p>
+<h2>📊 Estadísticas</h2>
+<canvas id="chart"></canvas>
 </div>
 
-<button onclick="logout()">Cerrar sesión</button>
-</section>
+</div>
+
+</div>
 
 <script>
-let users = JSON.parse(localStorage.getItem('users')) || [];
 let books = JSON.parse(localStorage.getItem('books')) || [];
+let role = '';
+
+function toggleMode(){ document.body.classList.toggle('light'); }
 
 function login(){
- let user = document.getElementById('loginUser').value;
- if(user){
-  localStorage.setItem('session', user);
-  document.getElementById('loginSection').classList.add('hidden');
-  document.getElementById('dashboard').classList.remove('hidden');
- }
-}
-
-function logout(){
- localStorage.removeItem('session');
- location.reload();
+ role = document.getElementById('role').value;
+ document.getElementById('app').style.display='block';
 }
 
 function save(){
- localStorage.setItem('users', JSON.stringify(users));
  localStorage.setItem('books', JSON.stringify(books));
  render();
 }
 
-function addUser(){
- let name = document.getElementById('userName').value;
- if(name){ users.push({name}); save(); }
-}
-
 function addBook(){
- let name = document.getElementById('bookName').value;
- if(name){ books.push({name, disponible:true}); save(); }
-}
-
-function prestar(i){
- books[i].disponible = false;
+ if(role !== 'admin') return alert('Solo admin');
+ let name = document.getElementById('book').value;
+ books.push({name});
  save();
 }
 
 function render(){
- let uDiv = document.getElementById('users');
- let bDiv = document.getElementById('books');
- let search = document.getElementById('search').value.toLowerCase();
-
- uDiv.innerHTML='';
- users.forEach(u=>{
-  uDiv.innerHTML += `<div class='item'>${u.name}</div>`;
+ let div = document.getElementById('books');
+ div.innerHTML='';
+ books.forEach(b=>{
+  div.innerHTML += `<p>${b.name}</p>`;
  });
 
- bDiv.innerHTML='';
- books.filter(b=>b.name.toLowerCase().includes(search)).forEach((b,i)=>{
-  bDiv.innerHTML += `<div class='item'>${b.name} - ${b.disponible?'Disponible':'Prestado'} <button onclick='prestar(${i})'>Prestar</button></div>`;
+ new Chart(document.getElementById('chart'),{
+  type:'bar',
+  data:{labels:['Libros'],datasets:[{data:[books.length]}]}
  });
-}
-
-if(localStorage.getItem('session')){
- document.getElementById('loginSection').classList.add('hidden');
- document.getElementById('dashboard').classList.remove('hidden');
 }
 
 render();
