@@ -47,7 +47,7 @@ https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/
 
 ##  VIDEOS ## 
 
-https://youtu.be/LtGQolztlUM
+
 
 ##  IMAGENES ## 
 
