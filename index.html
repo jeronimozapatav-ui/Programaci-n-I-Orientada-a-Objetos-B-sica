@@ -17,9 +17,10 @@
 
 body{
 margin:0;
-font-family:Segoe UI, Tahoma, sans-serif;
+font-family: 'Segoe UI', sans-serif;
 background:var(--bg);
 color:var(--text);
+overflow-x: hidden;
 }
 
 #particles-js{
@@ -35,7 +36,7 @@ max-width:1000px;
 margin:auto;
 }
 
-h1,h2,h3{
+h1, h2, h3{
 text-align:center;
 }
 
@@ -47,15 +48,76 @@ gap:20px;
 
 .card{
 background:var(--card);
-padding:20px;
+padding:25px;
 border-radius:10px;
-text-align:left; /* Alineación para mejor lectura de listas */
+border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
 .card h3 {
 color: var(--primary);
 margin-top: 0;
-text-align: center;
+font-size: 1.2em;
+}
+
+.card p {
+font-size: 0.95em;
+line-height: 1.5;
+color: #cbd5e1;
+margin-bottom: 0;
+}
+
+/* GALERÍA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+height: 150px;
+object-fit: cover;
+border-radius:10px;
+cursor: pointer;
+transition: 0.3s;
+border: 1px solid #334155;
+}
+
+.gallery img:hover{
+transform: scale(1.05);
+border-color: var(--primary);
+}
+
+/* MODAL PARA AGRANDAR IMAGEN */
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+padding-top: 50px;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(15, 23, 42, 0.95);
+}
+
+.modal-content {
+margin: auto;
+display: block;
+max-width: 90%;
+max-height: 80vh;
+border-radius: 10px;
+border: 2px solid var(--primary);
+}
+
+.close {
+position: absolute;
+top: 20px;
+right: 35px;
+color: #fff;
+font-size: 40px;
+font-weight: bold;
+cursor: pointer;
 }
 
 a{
@@ -63,42 +125,20 @@ color:var(--primary);
 text-decoration:none;
 }
 
-a:hover{
-text-decoration: underline;
-}
+ul { padding-left: 20px; }
+li { margin-bottom: 8px; font-size: 0.95em; }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-}
-
-img{
-width:100%;
-border-radius:10px;
-border: 1px solid #334155;
-transition: 0.3s;
-}
-
-img:hover{
-transform: scale(1.03);
-}
-
-ul {
-padding-left: 20px;
-}
-
-li {
-margin-bottom: 8px;
-font-size: 0.95em;
-}
 </style>
-
 </head>
 
 <body>
 
 <div id="particles-js"></div>
+
+<div id="myModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="imgFull">
+</div>
 
 <section>
 <h1>👋 Hola, soy Jerónimo</h1>
@@ -111,87 +151,97 @@ font-size: 0.95em;
 </section>
 
 <section>
-<h2>🧠 ¿Qué aprendí en clase?</h2>
+<h2>📌 Pilares y Conceptos Clave</h2>
 <div class="cards">
     <div class="card">
-        <h3>Clases y Objetos</h3>
-        <p>Modelado de entidades mediante tipos abstractos de datos y diagramas visuales UML.</p>
+        <h3>Abstracción</h3>
+        <p>Proceso de identificar las características esenciales de un objeto, ignorando detalles irrelevantes para su implementación.</p>
     </div>
     <div class="card">
         <h3>Encapsulamiento</h3>
-        <p>Protección de datos mediante modificadores de acceso y control de ámbitos de variables.</p>
+        <p>Mecanismo que agrupa datos y métodos, restringiendo el acceso directo mediante modificadores para asegurar la integridad.</p>
     </div>
     <div class="card">
-        <h3>Herencia y Polimorfismo</h3>
-        <p>Reutilización de código mediante jerarquías y adaptación dinámica de objetos según su contexto.</p>
+        <h3>Herencia</h3>
+        <p>Relación jerárquica que permite a una subclase (ej. Usuario) adquirir atributos y comportamientos de una superclase (ej. Persona).</p>
+    </div>
+    <div class="card">
+        <h3>Polimorfismo</h3>
+        <p>Capacidad de objetos de diferentes tipos de responder al mismo mensaje, permitiendo flexibilidad mediante la sobrescritura.</p>
+    </div>
+    <div class="card">
+        <h3>Ámbitos</h3>
+        <p>Definición de la visibilidad y tiempo de vida de las variables, distinguiendo entre variables locales y atributos globales.</p>
     </div>
 </div>
 </section>
 
 <section>
 <h2>📚 Proyecto: Sistema de Biblioteca</h2>
-<p style="text-align:center; margin-bottom: 30px;">
-Este proyecto implementa un sistema de gestión utilizando Java y principios de POO.
-</p>
-
 <div class="cards">
     <div class="card">
         <h3>⚙️ Funcionalidades</h3>
         <ul>
-            <li>Registro de libros y usuarios</li>
-            <li>Préstamo y devolución</li>
-            <li>Búsqueda por título o autor</li>
-            <li>Visualización de disponibilidad</li>
-            <li>Control de máximo 3 préstamos</li>
-            <li>Validación de stock</li>
+            <li>Gestión de préstamos y devoluciones.</li>
+            <li>Búsqueda avanzada por título/autor.</li>
+            <li>Control de stock y disponibilidad.</li>
+            <li>Validación de máximo 3 libros por usuario.</li>
         </ul>
     </div>
-
     <div class="card">
-        <h3>🧠 Conceptos aplicados</h3>
-        <ul>
-            <li>Encapsulamiento</li>
-            <li>Herencia (Persona → Usuario)</li>
-            <li>Polimorfismo (Sobrescritura)</li>
-            <li>Clases y Objetos</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>🛠️ Tecnologías y Código</h3>
-        <p style="text-align: center;"><strong>Java - POO</strong></p>
-        <p style="text-align: center;">
-            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">Código Actividad 2</a><br><br>
-            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">Código Actividad 3</a>
+        <h3>🛠️ Tecnologías</h3>
+        <p style="text-align:center;"><strong>Java SE - POO</strong></p>
+        <p style="text-align: center; margin-top: 15px;">
+            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">Repo Actividad 2</a><br><br>
+            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">Repo Actividad 3</a>
         </p>
     </div>
 </div>
 </section>
 
 <section>
-<h2>🖼️ Evidencias</h2>
+<h2>🖼️ Evidencias de Desarrollo</h2>
 <div class="gallery">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/5.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/6.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/7.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/8.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/9.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/10.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/11.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/12.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/13.png">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/14.png">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/5.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/6.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/7.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/8.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/9.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/10.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/11.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/12.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/13.png" onclick="openModal(this.src)">
+    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/14.png" onclick="openModal(this.src)">
 </div>
 </section>
 
 <script>
+// Partículas
 particlesJS("particles-js",{
-particles:{number:{value:80},move:{speed:2}}
+  particles:{number:{value:80},move:{speed:2}}
 });
+
+// Funciones para el Modal de imágenes
+function openModal(src) {
+  document.getElementById("myModal").style.display = "block";
+  document.getElementById("imgFull").src = src;
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+// Cerrar al hacer clic fuera de la imagen
+window.onclick = function(event) {
+  let modal = document.getElementById("myModal");
+  if (event.target == modal) {
+    closeModal();
+  }
+}
 </script>
 
 </body>
