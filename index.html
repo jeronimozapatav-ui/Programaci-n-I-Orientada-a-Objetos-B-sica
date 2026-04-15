@@ -3,244 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POO - Jerónimo Zapata</title>
+<title>POO Nivel PRO - Jerónimo</title>
 
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <style>
-:root{
---bg:#0f172a;
---text:#e2e8f0;
---primary:#38bdf8;
---card:#1e293b;
-}
+:root{--bg:#0f172a;--text:#e2e8f0;--primary:#38bdf8;--card:#1e293b}
+.light{--bg:#f8fafc;--text:#0f172a;--card:#fff}
+body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text);transition:.3s}
+#particles-js{position:fixed;width:100%;height:100%;z-index:-1}
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,.85);display:flex;justify-content:space-between;padding:10px 30px;z-index:1000}
+nav a{color:white;margin:0 10px;text-decoration:none}
+.toggle{cursor:pointer;background:var(--primary);padding:5px 10px;border-radius:5px}
+section{padding:90px 20px;max-width:1100px;margin:auto}
+h2{border-bottom:2px solid var(--primary);display:inline-block}
 
-body{
-margin:0;
-font-family: 'Segoe UI', sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x: hidden;
-}
+.code{background:#000;color:#0f0;padding:20px;border-radius:10px;font-family:monospace;min-height:200px}
+.counter{margin-top:10px;color:var(--primary)}
 
-#particles-js{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
-}
+.uml{display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
+.box{border:2px solid var(--primary);padding:15px;border-radius:10px;background:var(--card);text-align:center}
+svg{width:100px;height:50px}
 
-section{
-padding:80px 20px;
-max-width:1000px;
-margin:auto;
-}
+.button{background:var(--primary);padding:10px 15px;border-radius:5px;color:black;font-weight:bold;cursor:pointer}
+.hidden{display:none}
 
-h1, h2, h3{
-text-align:center;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:var(--card);
-padding:25px;
-border-radius:10px;
-border: 1px solid rgba(56, 189, 248, 0.1);
-}
-
-.card h3 {
-color: var(--primary);
-margin-top: 0;
-font-size: 1.2em;
-}
-
-.card p {
-font-size: 0.95em;
-line-height: 1.5;
-color: #cbd5e1;
-margin-bottom: 0;
-}
-
-/* GALERÍA */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-}
-
-.gallery img{
-width:100%;
-height: 150px;
-object-fit: cover;
-border-radius:10px;
-cursor: pointer;
-transition: 0.3s;
-border: 1px solid #334155;
-}
-
-.gallery img:hover{
-transform: scale(1.05);
-border-color: var(--primary);
-}
-
-/* MODAL PARA AGRANDAR IMAGEN */
-.modal {
-display: none;
-position: fixed;
-z-index: 1000;
-padding-top: 50px;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(15, 23, 42, 0.95);
-}
-
-.modal-content {
-margin: auto;
-display: block;
-max-width: 90%;
-max-height: 80vh;
-border-radius: 10px;
-border: 2px solid var(--primary);
-}
-
-.close {
-position: absolute;
-top: 20px;
-right: 35px;
-color: #fff;
-font-size: 40px;
-font-weight: bold;
-cursor: pointer;
-}
-
-a{
-color:var(--primary);
-text-decoration:none;
-}
-
-ul { padding-left: 20px; }
-li { margin-bottom: 8px; font-size: 0.95em; }
-
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+img{width:100%;border-radius:10px}
 </style>
 </head>
 
 <body>
-
 <div id="particles-js"></div>
 
-<div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="imgFull">
+<nav>
+<div>Jerónimo Dev 🚀</div>
+<div>
+<a href="#uml">UML</a>
+<a href="#codigo">Código</a>
+<a href="#exp">Explicación</a>
+<span class="toggle" onclick="toggleMode()">Modo</span>
 </div>
+</nav>
 
-<section>
-<h1>👋 Hola, soy Jerónimo</h1>
-<p style="text-align:center;">
-🎓 Estudiante de Tecnología en Desarrollo de Software<br>
-💻 Apasionado por la programación y la POO<br>
-🚀 Actualmente aprendiendo Java y desarrollo de software<br>
-📫 Email: <a href="mailto:jeronimo.zapatav@est.iudigital.edu.co">jeronimo.zapatav@est.iudigital.edu.co</a>
-</p>
+<section data-aos="fade-up">
+<h1>Proyecto POO Nivel PRO</h1>
+<p>Sistema de biblioteca con documentación web interactiva.</p>
 </section>
 
-<section>
-<h2>📌 Pilares y Conceptos Clave</h2>
-<div class="cards">
-    <div class="card">
-        <h3>Abstracción</h3>
-        <p>Proceso de identificar las características esenciales de un objeto, ignorando detalles irrelevantes para su implementación.</p>
-    </div>
-    <div class="card">
-        <h3>Encapsulamiento</h3>
-        <p>Mecanismo que agrupa datos y métodos, restringiendo el acceso directo mediante modificadores para asegurar la integridad.</p>
-    </div>
-    <div class="card">
-        <h3>Herencia</h3>
-        <p>Relación jerárquica que permite a una subclase (ej. Usuario) adquirir atributos y comportamientos de una superclase (ej. Persona).</p>
-    </div>
-    <div class="card">
-        <h3>Polimorfismo</h3>
-        <p>Capacidad de objetos de diferentes tipos de responder al mismo mensaje, permitiendo flexibilidad mediante la sobrescritura.</p>
-    </div>
-    <div class="card">
-        <h3>Ámbitos</h3>
-        <p>Definición de la visibilidad y tiempo de vida de las variables, distinguiendo entre variables locales y atributos globales.</p>
-    </div>
+<section id="uml" data-aos="zoom-in">
+<h2>📊 UML Animado</h2>
+<div class="uml">
+<div class="box">Persona</div>
+<svg><line x1="0" y1="25" x2="100" y2="25" stroke="#38bdf8" stroke-width="2"/></svg>
+<div class="box">Usuario</div>
+</div>
+<br>
+<div class="uml">
+<div class="box">Biblioteca</div>
+<svg><line x1="0" y1="25" x2="100" y2="25" stroke="#38bdf8" stroke-width="2"/></svg>
+<div class="box">Libro</div>
 </div>
 </section>
 
-<section>
-<h2>📚 Proyecto: Sistema de Biblioteca</h2>
-<div class="cards">
-    <div class="card">
-        <h3>⚙️ Funcionalidades</h3>
-        <ul>
-            <li>Gestión de préstamos y devoluciones.</li>
-            <li>Búsqueda avanzada por título/autor.</li>
-            <li>Control de stock y disponibilidad.</li>
-            <li>Validación de máximo 3 libros por usuario.</li>
-        </ul>
-    </div>
-    <div class="card">
-        <h3>🛠️ Tecnologías</h3>
-        <p style="text-align:center;"><strong>Java SE - POO</strong></p>
-        <p style="text-align: center; margin-top: 15px;">
-            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">Repo Actividad 2</a><br><br>
-            <a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">Repo Actividad 3</a>
-        </p>
-    </div>
+<section id="codigo" data-aos="fade-right">
+<h2>💻 Código Animado</h2>
+<div class="code" id="code"></div>
+<div class="counter">Líneas escritas: <span id="count">0</span></div>
+</section>
+
+<section id="exp" data-aos="fade-up">
+<h2>🎤 Explicación</h2>
+<button class="button" onclick="toggleExp()">Mostrar explicación</button>
+<div id="textoExp" class="hidden">
+<p>Este sistema usa clases para representar entidades. Aplico herencia en Usuario desde Persona y métodos para gestionar préstamos.</p>
 </div>
 </section>
 
-<section>
-<h2>🖼️ Evidencias de Desarrollo</h2>
+<section data-aos="fade-up">
+<h2>🖼️ Evidencias</h2>
 <div class="gallery">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/5.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/6.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/7.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/8.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/9.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/10.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/11.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/12.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/13.png" onclick="openModal(this.src)">
-    <img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/14.png" onclick="openModal(this.src)">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png">
 </div>
 </section>
 
 <script>
-// Partículas
-particlesJS("particles-js",{
-  particles:{number:{value:80},move:{speed:2}}
-});
+AOS.init({duration:1000});
+function toggleMode(){document.body.classList.toggle("light")}
 
-// Funciones para el Modal de imágenes
-function openModal(src) {
-  document.getElementById("myModal").style.display = "block";
-  document.getElementById("imgFull").src = src;
+particlesJS("particles-js",{particles:{number:{value:60},move:{speed:2}}});
+
+const text=`class Libro {\n String titulo;\n boolean disponible = true;\n\n void prestar(){\n  if(disponible){\n   disponible=false;\n  }\n }\n}`;
+let i=0;
+function typing(){
+ if(i<text.length){
+  document.getElementById("code").innerHTML+=text.charAt(i);
+  document.getElementById("count").innerText=i;
+  i++;setTimeout(typing,20);
+ }
 }
+typing();
 
-function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-}
-
-// Cerrar al hacer clic fuera de la imagen
-window.onclick = function(event) {
-  let modal = document.getElementById("myModal");
-  if (event.target == modal) {
-    closeModal();
-  }
+function toggleExp(){
+ document.getElementById("textoExp").classList.toggle("hidden");
 }
 </script>
 
