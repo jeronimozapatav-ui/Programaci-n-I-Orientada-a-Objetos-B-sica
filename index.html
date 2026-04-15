@@ -3,113 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POO Nivel PRO - Jerónimo</title>
-
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<title>POO Dashboard PRO - Jerónimo</title>
 
 <style>
-:root{--bg:#0f172a;--text:#e2e8f0;--primary:#38bdf8;--card:#1e293b}
-.light{--bg:#f8fafc;--text:#0f172a;--card:#fff}
-body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text);transition:.3s}
-#particles-js{position:fixed;width:100%;height:100%;z-index:-1}
-nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,.85);display:flex;justify-content:space-between;padding:10px 30px;z-index:1000}
-nav a{color:white;margin:0 10px;text-decoration:none}
-.toggle{cursor:pointer;background:var(--primary);padding:5px 10px;border-radius:5px}
-section{padding:90px 20px;max-width:1100px;margin:auto}
-h2{border-bottom:2px solid var(--primary);display:inline-block}
-
-.code{background:#000;color:#0f0;padding:20px;border-radius:10px;font-family:monospace;min-height:200px}
-.counter{margin-top:10px;color:var(--primary)}
-
-.uml{display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
-.box{border:2px solid var(--primary);padding:15px;border-radius:10px;background:var(--card);text-align:center}
-svg{width:100px;height:50px}
-
-.button{background:var(--primary);padding:10px 15px;border-radius:5px;color:black;font-weight:bold;cursor:pointer}
+:root{--bg:#000;--text:#e2e8f0;--primary:#38bdf8;--card:#0f172a}
+body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text)}
+section{padding:50px 20px;max-width:1200px;margin:auto}
+h1,h2{color:var(--primary)}
+.card{background:var(--card);padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 0 20px rgba(56,189,248,0.2)}
+input,button{padding:10px;margin:5px;border:none;border-radius:5px}
+button{background:var(--primary);cursor:pointer}
 .hidden{display:none}
-
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-img{width:100%;border-radius:10px}
+.item{padding:10px;border-bottom:1px solid #333}
 </style>
 </head>
 
 <body>
-<div id="particles-js"></div>
 
-<nav>
-<div>Jerónimo Dev 🚀</div>
-<div>
-<a href="#uml">UML</a>
-<a href="#codigo">Código</a>
-<a href="#exp">Explicación</a>
-<span class="toggle" onclick="toggleMode()">Modo</span>
-</div>
-</nav>
-
-<section data-aos="fade-up">
-<h1>Proyecto POO Nivel PRO</h1>
-<p>Sistema de biblioteca con documentación web interactiva.</p>
-</section>
-
-<section id="uml" data-aos="zoom-in">
-<h2>📊 UML Animado</h2>
-<div class="uml">
-<div class="box">Persona</div>
-<svg><line x1="0" y1="25" x2="100" y2="25" stroke="#38bdf8" stroke-width="2"/></svg>
-<div class="box">Usuario</div>
-</div>
-<br>
-<div class="uml">
-<div class="box">Biblioteca</div>
-<svg><line x1="0" y1="25" x2="100" y2="25" stroke="#38bdf8" stroke-width="2"/></svg>
-<div class="box">Libro</div>
+<section id="loginSection">
+<h1>🔐 Login Sistema Biblioteca</h1>
+<div class="card">
+<input id="loginUser" placeholder="Usuario">
+<button onclick="login()">Ingresar</button>
 </div>
 </section>
 
-<section id="codigo" data-aos="fade-right">
-<h2>💻 Código Animado</h2>
-<div class="code" id="code"></div>
-<div class="counter">Líneas escritas: <span id="count">0</span></div>
-</section>
+<section id="dashboard" class="hidden">
+<h1>📊 Dashboard Biblioteca</h1>
 
-<section id="exp" data-aos="fade-up">
-<h2>🎤 Explicación</h2>
-<button class="button" onclick="toggleExp()">Mostrar explicación</button>
-<div id="textoExp" class="hidden">
-<p>Este sistema usa clases para representar entidades. Aplico herencia en Usuario desde Persona y métodos para gestionar préstamos.</p>
+<div class="card">
+<h2>🧠 Nota Programación I</h2>
+<p>Clases, Objetos, Encapsulamiento, Herencia, Polimorfismo, Abstracción, ArrayList.</p>
 </div>
-</section>
 
-<section data-aos="fade-up">
-<h2>🖼️ Evidencias</h2>
-<div class="gallery">
-<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png">
-<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png">
+<div class="card">
+<h2>👤 Usuarios</h2>
+<input id="userName" placeholder="Nombre usuario">
+<button onclick="addUser()">Agregar</button>
+<div id="users"></div>
 </div>
+
+<div class="card">
+<h2>📚 Libros</h2>
+<input id="bookName" placeholder="Nombre libro">
+<button onclick="addBook()">Agregar</button>
+<input id="search" placeholder="Buscar libro" oninput="render()">
+<div id="books"></div>
+</div>
+
+<div class="card">
+<h2>🌐 Deploy</h2>
+<p>Sube este archivo como index.html a GitHub y activa Pages.</p>
+</div>
+
+<button onclick="logout()">Cerrar sesión</button>
 </section>
 
 <script>
-AOS.init({duration:1000});
-function toggleMode(){document.body.classList.toggle("light")}
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let books = JSON.parse(localStorage.getItem('books')) || [];
 
-particlesJS("particles-js",{particles:{number:{value:60},move:{speed:2}}});
-
-const text=`class Libro {\n String titulo;\n boolean disponible = true;\n\n void prestar(){\n  if(disponible){\n   disponible=false;\n  }\n }\n}`;
-let i=0;
-function typing(){
- if(i<text.length){
-  document.getElementById("code").innerHTML+=text.charAt(i);
-  document.getElementById("count").innerText=i;
-  i++;setTimeout(typing,20);
+function login(){
+ let user = document.getElementById('loginUser').value;
+ if(user){
+  localStorage.setItem('session', user);
+  document.getElementById('loginSection').classList.add('hidden');
+  document.getElementById('dashboard').classList.remove('hidden');
  }
 }
-typing();
 
-function toggleExp(){
- document.getElementById("textoExp").classList.toggle("hidden");
+function logout(){
+ localStorage.removeItem('session');
+ location.reload();
 }
+
+function save(){
+ localStorage.setItem('users', JSON.stringify(users));
+ localStorage.setItem('books', JSON.stringify(books));
+ render();
+}
+
+function addUser(){
+ let name = document.getElementById('userName').value;
+ if(name){ users.push({name}); save(); }
+}
+
+function addBook(){
+ let name = document.getElementById('bookName').value;
+ if(name){ books.push({name, disponible:true}); save(); }
+}
+
+function prestar(i){
+ books[i].disponible = false;
+ save();
+}
+
+function render(){
+ let uDiv = document.getElementById('users');
+ let bDiv = document.getElementById('books');
+ let search = document.getElementById('search').value.toLowerCase();
+
+ uDiv.innerHTML='';
+ users.forEach(u=>{
+  uDiv.innerHTML += `<div class='item'>${u.name}</div>`;
+ });
+
+ bDiv.innerHTML='';
+ books.filter(b=>b.name.toLowerCase().includes(search)).forEach((b,i)=>{
+  bDiv.innerHTML += `<div class='item'>${b.name} - ${b.disponible?'Disponible':'Prestado'} <button onclick='prestar(${i})'>Prestar</button></div>`;
+ });
+}
+
+if(localStorage.getItem('session')){
+ document.getElementById('loginSection').classList.add('hidden');
+ document.getElementById('dashboard').classList.remove('hidden');
+}
+
+render();
 </script>
 
 </body>
