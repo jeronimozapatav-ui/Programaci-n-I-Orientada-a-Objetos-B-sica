@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POO App Nivel Dios - Jerónimo</title>
+<title>POO App Profesional - Jerónimo</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -16,14 +16,13 @@ body{margin:0;font-family:'Segoe UI';background:var(--bg);color:var(--text);disp
 .sidebar a{display:block;color:white;margin:10px 0;text-decoration:none}
 
 .main{margin-left:240px;padding:20px;width:100%}
-.card{background:var(--card);padding:20px;border-radius:12px;margin:15px 0}
+.card{background:var(--card);padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 0 20px rgba(56,189,248,0.2)}
 button{background:var(--primary);padding:10px;border:none;border-radius:5px;cursor:pointer}
 input{padding:10px;margin:5px;border:none;border-radius:5px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+img{width:100%;border-radius:10px}
+iframe{width:100%;height:300px;border-radius:10px}
 
-@media(max-width:768px){
- .sidebar{position:relative;width:100%;height:auto}
- .main{margin-left:0}
-}
 </style>
 </head>
 
@@ -31,70 +30,99 @@ input{padding:10px;margin:5px;border:none;border-radius:5px}
 
 <div class="sidebar">
 <h2>📊 Panel</h2>
-<a href="#">Inicio</a>
+<a href="#presentacion">Presentación</a>
+<a href="#info">Información</a>
+<a href="#funciones">Funciones</a>
+<a href="#conceptos">Conceptos</a>
+<a href="#tecnologias">Tecnologías</a>
+<a href="#codigo">Código</a>
+<a href="#videos">Videos</a>
+<a href="#imagenes">Imágenes</a>
 <button onclick="toggleMode()">Modo</button>
 </div>
 
 <div class="main">
 
-<div class="card">
-<h2>👤 Login</h2>
-<input id="user" placeholder="Usuario">
-<select id="role">
-<option value="admin">Admin</option>
-<option value="user">Usuario</option>
-</select>
-<button onclick="login()">Entrar</button>
+<section id="presentacion" class="card">
+<h2>🚀 Programación I - Orientada a Objetos Básicos</h2>
+<p><b>Hola, soy Jerónimo</b></p>
+<p>🎓 Estudiante de Tecnología en Desarrollo de Software</p>
+<p>💻 Apasionado por la programación y la POO</p>
+<p>🚀 Actualmente aprendiendo Java y desarrollo de software</p>
+<p>📫 jeronimo.zapatav@est.iudigital.edu.co</p>
+</section>
+
+<section id="info" class="card">
+<h2>📚 Descripción del Proyecto</h2>
+<p>Este proyecto implementa un sistema de gestión de biblioteca utilizando Java y los principios de Programación Orientada a Objetos (POO), incluyendo herencia y polimorfismo.</p>
+</section>
+
+<section id="funciones" class="card">
+<h2>⚙️ Funcionalidades</h2>
+<ul>
+<li>Registro de libros</li>
+<li>Registro de usuarios</li>
+<li>Préstamo de libros</li>
+<li>Devolución de libros</li>
+<li>Búsqueda de libros</li>
+<li>Visualización de disponibilidad</li>
+<li>Control de máximo 3 préstamos</li>
+</ul>
+</section>
+
+<section id="conceptos" class="card">
+<h2>🧠 Conceptos Aplicados</h2>
+<ul>
+<li>Encapsulamiento</li>
+<li>Herencia (Persona → Usuario)</li>
+<li>Polimorfismo</li>
+<li>Clases y objetos</li>
+</ul>
+</section>
+
+<section id="tecnologias" class="card">
+<h2>🛠️ Tecnologías</h2>
+<ul>
+<li>Java</li>
+<li>POO</li>
+<li>HTML, CSS, JavaScript</li>
+</ul>
+</section>
+
+<section id="codigo" class="card">
+<h2>💻 Código</h2>
+<p><a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Main.java" target="_blank">Actividad 2</a></p>
+<p><a href="https://github.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/blob/main/Actividad%203" target="_blank">Actividad 3</a></p>
+</section>
+
+<section id="videos" class="card">
+<h2>🎥 Videos</h2>
+<iframe src="https://www.youtube.com/embed/8cm1x4bC610"></iframe>
+</section>
+
+<section id="imagenes" class="card">
+<h2>🖼️ Evidencias</h2>
+<div class="gallery">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/1.png">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/2.png">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/3.png">
+<img src="https://raw.githubusercontent.com/jeronimozapatav-ui/Programaci-n-I-Orientada-a-Objetos-B-sica/main/4.png">
 </div>
+</section>
 
-<div id="app" style="display:none">
-
-<div class="card">
-<h2>📚 Libros</h2>
-<input id="book" placeholder="Libro">
-<button onclick="addBook()">Agregar</button>
-<div id="books"></div>
-</div>
-
-<div class="card">
+<section class="card">
 <h2>📊 Estadísticas</h2>
 <canvas id="chart"></canvas>
-</div>
-
-</div>
+</section>
 
 </div>
 
 <script>
 let books = JSON.parse(localStorage.getItem('books')) || [];
-let role = '';
 
 function toggleMode(){ document.body.classList.toggle('light'); }
 
-function login(){
- role = document.getElementById('role').value;
- document.getElementById('app').style.display='block';
-}
-
-function save(){
- localStorage.setItem('books', JSON.stringify(books));
- render();
-}
-
-function addBook(){
- if(role !== 'admin') return alert('Solo admin');
- let name = document.getElementById('book').value;
- books.push({name});
- save();
-}
-
 function render(){
- let div = document.getElementById('books');
- div.innerHTML='';
- books.forEach(b=>{
-  div.innerHTML += `<p>${b.name}</p>`;
- });
-
  new Chart(document.getElementById('chart'),{
   type:'bar',
   data:{labels:['Libros'],datasets:[{data:[books.length]}]}
